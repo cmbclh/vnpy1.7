@@ -1,0 +1,40 @@
+2017-09-12 10:14:19,118 testnolog.py[line:17]-INFO: 执行数据库表test_table的创建，列信息：[Column('date', String(length=8), table=None, primary_key=True, nullable=False), Column('code', String(length=8), table=None, primary_key=True, nullable=False), Column('name', String(length=50), table=None), Column('close', DECIMAL(precision=12, scale=4), table=None), Column('open', DECIMAL(precision=12, scale=4), table=None)]
+2017-09-12 10:14:19,328 log.py[line:109]-INFO: SHOW VARIABLES LIKE 'sql_mode'
+2017-09-12 10:14:19,328 log.py[line:109]-INFO: {}
+2017-09-12 10:14:19,437 log.py[line:109]-INFO: SELECT DATABASE()
+2017-09-12 10:14:19,437 log.py[line:109]-INFO: {}
+2017-09-12 10:14:19,444 log.py[line:109]-INFO: SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+2017-09-12 10:14:19,446 log.py[line:109]-INFO: {}
+2017-09-12 10:14:19,453 log.py[line:109]-INFO: SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+2017-09-12 10:14:19,453 log.py[line:109]-INFO: {}
+2017-09-12 10:14:19,457 log.py[line:109]-INFO: BEGIN (implicit)
+2017-09-12 10:14:19,457 log.py[line:109]-INFO: show tables like 'test_table'
+2017-09-12 10:14:19,459 log.py[line:109]-INFO: {}
+2017-09-12 10:14:19,470 log.py[line:109]-INFO: COMMIT
+2017-09-12 10:14:19,486 log.py[line:109]-INFO: DESCRIBE `test_table`
+2017-09-12 10:14:19,486 log.py[line:109]-INFO: {}
+2017-09-12 10:14:19,565 log.py[line:109]-INFO: BEGIN (implicit)
+2017-09-12 10:14:19,568 log.py[line:109]-INFO: INSERT INTO test_table (date, code, name, close, open) VALUES (%(date)s, %(code)s, %(name)s, %(close)s, %(open)s)
+2017-09-12 10:14:19,573 log.py[line:109]-INFO: {'date': '20150107', 'close': '1', 'code': 'au1804', 'open': '4', 'name': '\xe9\xbb\x84\xe9\x87\x91'}
+2017-09-12 10:14:19,582 log.py[line:109]-INFO: ROLLBACK
+2017-09-12 10:14:19,584 testnolog.py[line:56]-ERROR: 增量写入数据时发生了错误，错误信息：(mysql.connector.errors.IntegrityError) 1062 (23000): Duplicate entry '20150107-au1804' for key 'PRIMARY'
+2017-09-12 10:15:02,134 testnolog.py[line:17]-INFO: 执行数据库表test_table的创建，列信息：[Column('date', String(length=8), table=None, primary_key=True, nullable=False), Column('code', String(length=8), table=None, primary_key=True, nullable=False), Column('name', String(length=50), table=None), Column('close', DECIMAL(precision=12, scale=4), table=None), Column('open', DECIMAL(precision=12, scale=4), table=None)]
+2017-09-12 10:15:02,148 log.py[line:109]-INFO: SHOW VARIABLES LIKE 'sql_mode'
+2017-09-12 10:15:02,148 log.py[line:109]-INFO: {}
+2017-09-12 10:15:02,151 log.py[line:109]-INFO: SELECT DATABASE()
+2017-09-12 10:15:02,151 log.py[line:109]-INFO: {}
+2017-09-12 10:15:02,154 log.py[line:109]-INFO: SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+2017-09-12 10:15:02,154 log.py[line:109]-INFO: {}
+2017-09-12 10:15:02,154 log.py[line:109]-INFO: SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+2017-09-12 10:15:02,154 log.py[line:109]-INFO: {}
+2017-09-12 10:15:02,157 log.py[line:109]-INFO: BEGIN (implicit)
+2017-09-12 10:15:02,157 log.py[line:109]-INFO: show tables like 'test_table'
+2017-09-12 10:15:02,157 log.py[line:109]-INFO: {}
+2017-09-12 10:15:02,158 log.py[line:109]-INFO: COMMIT
+2017-09-12 10:15:02,165 log.py[line:109]-INFO: DESCRIBE `test_table`
+2017-09-12 10:15:02,165 log.py[line:109]-INFO: {}
+2017-09-12 10:15:02,167 log.py[line:109]-INFO: BEGIN (implicit)
+2017-09-12 10:15:02,168 log.py[line:109]-INFO: INSERT INTO test_table (date, code, name, close, open) VALUES (%(date)s, %(code)s, %(name)s, %(close)s, %(open)s)
+2017-09-12 10:15:02,170 log.py[line:109]-INFO: {'date': '20150107', 'close': '1', 'code': 'au1804', 'open': '4', 'name': '\xe9\xbb\x84\xe9\x87\x91'}
+2017-09-12 10:15:02,171 log.py[line:109]-INFO: ROLLBACK
+2017-09-12 10:15:02,171 testnolog.py[line:56]-ERROR: 增量写入数据时发生了错误，错误信息：(mysql.connector.errors.IntegrityError) 1062 (23000): Duplicate entry '20150107-au1804' for key 'PRIMARY'

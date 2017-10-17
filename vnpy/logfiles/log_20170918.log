@@ -1,0 +1,35 @@
+2017-09-18 11:05:35,453 uiStWidget.py[line:77]-INFO: 持仓监控表头列表：10
+2017-09-18 11:06:45,697 uiStWidget.py[line:77]-INFO: 持仓监控表头列表：10
+2017-09-18 11:07:35,859 uiStWidget.py[line:77]-INFO: 持仓监控表头列表：10
+2017-09-18 11:10:59,624 uiStWidget.py[line:77]-INFO: 持仓监控表头列表：10
+2017-09-18 11:12:38,571 uiStWidget.py[line:77]-INFO: 持仓监控表头列表：10
+2017-09-18 11:13:25,207 uiStWidget.py[line:77]-INFO: 持仓监控表头列表：10
+2017-09-18 13:37:00,121 uiStWidget.py[line:77]-INFO: 持仓监控表头列表：10
+2017-09-18 13:51:43,085 uiStWidget.py[line:77]-INFO: 持仓监控表头列表：10
+2017-09-18 13:59:38,983 uiStWidget.py[line:77]-INFO: 持仓监控表头列表：10
+2017-09-18 14:02:26,052 uiStWidget.py[line:77]-INFO: 持仓监控表头列表：10
+2017-09-18 14:03:38,161 uiStWidget.py[line:77]-INFO: 持仓监控表头列表：10
+2017-09-18 14:43:33,247 testnolog.py[line:17]-INFO: 执行数据库表test_table的创建，列信息：[Column('date', String(length=8), table=None, primary_key=True, nullable=False), Column('code', String(length=8), table=None, primary_key=True, nullable=False), Column('name', String(length=50), table=None), Column('close', DECIMAL(precision=12, scale=4), table=None), Column('open', DECIMAL(precision=12, scale=4), table=None)]
+2017-09-18 14:43:33,275 log.py[line:109]-INFO: SHOW VARIABLES LIKE 'sql_mode'
+2017-09-18 14:43:33,275 log.py[line:109]-INFO: {}
+2017-09-18 14:43:33,279 log.py[line:109]-INFO: SELECT DATABASE()
+2017-09-18 14:43:33,279 log.py[line:109]-INFO: {}
+2017-09-18 14:43:33,286 log.py[line:109]-INFO: SELECT CAST('test plain returns' AS CHAR(60)) AS anon_1
+2017-09-18 14:43:33,286 log.py[line:109]-INFO: {}
+2017-09-18 14:43:33,289 log.py[line:109]-INFO: SELECT CAST('test unicode returns' AS CHAR(60)) AS anon_1
+2017-09-18 14:43:33,289 log.py[line:109]-INFO: {}
+2017-09-18 14:43:33,292 log.py[line:109]-INFO: BEGIN (implicit)
+2017-09-18 14:43:33,292 log.py[line:109]-INFO: show tables like 'test_table'
+2017-09-18 14:43:33,293 log.py[line:109]-INFO: {}
+2017-09-18 14:43:33,295 log.py[line:109]-INFO: COMMIT
+2017-09-18 14:43:33,303 log.py[line:109]-INFO: DESCRIBE `test_table`
+2017-09-18 14:43:33,303 log.py[line:109]-INFO: {}
+2017-09-18 14:43:33,309 log.py[line:109]-INFO: BEGIN (implicit)
+2017-09-18 14:43:33,309 log.py[line:109]-INFO: INSERT INTO test_table (date, code, name, close, open) VALUES (%(date)s, %(code)s, %(name)s, %(close)s, %(open)s)
+2017-09-18 14:43:33,309 log.py[line:109]-INFO: {'date': '20150107', 'close': '1', 'code': 'au1804', 'open': '4', 'name': '\xe9\xbb\x84\xe9\x87\x91'}
+2017-09-18 14:43:33,312 log.py[line:109]-INFO: ROLLBACK
+2017-09-18 14:43:33,315 testnolog.py[line:56]-ERROR: 增量写入数据时发生了错误，错误信息：(mysql.connector.errors.IntegrityError) 1062 (23000): Duplicate entry '20150107-au1804' for key 'PRIMARY'
+2017-09-18 14:44:01,677 uiStWidget.py[line:77]-INFO: 持仓监控表头列表：10
+2017-09-18 14:51:35,645 uiStWidget.py[line:77]-INFO: 持仓监控表头列表：10
+2017-09-18 14:52:06,440 uiStWidget.py[line:77]-INFO: 持仓监控表头列表：10
+2017-09-18 15:03:25,063 uiStWidget.py[line:77]-INFO: 持仓监控表头列表：10
