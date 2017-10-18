@@ -327,7 +327,7 @@ class StAlgoEngine(object):
             qrySql = 'select LONG_POSITION, TODAY_LONG, LONG_OPEN_AVG_PRICE, SHORT_POSITION, TODAY_SHORT, SHORT_OPEN_AVG_PRICE' \
                      'from defer_real_hold where BROKER_ID = %s and EXCH_ID = %s and SYMBOL = %s and STRATAGE = %s' % (
                          trade.brokerID,
-                         trade.exch_id, trade.symbol, spreadName)
+                         trade.exchange, trade.symbol, spreadName)
             retData = getDataBySQL('vnpy', qrySql)
             posData = retData.irow(0)  # 根据以上条件查询出的默认持仓只有一条记录
             # 没有持仓记录，首次交易
@@ -373,7 +373,7 @@ class StAlgoEngine(object):
                         'SHORT_POSITION = %s, TODAY_SHORT = %s, SHORT_OPEN_AVG_PRICE = %s where BROKER_ID = %s and EXCH_ID = %s and SYMBOL = %s and STRATAGE = %s' % (
                             posData.longPosition, posData.longToday, posData.longOpenAverPrice, posData.shortPosition,
                             posData.shortToday, posData.shortOpenAverPrice,
-                            trade.brokerID, trade.exch_id, trade.symbol, spreadName)
+                            trade.brokerID, trade.exchange, trade.symbol, spreadName)
             try:
                 updateData('vnpy', updateSql)
             except Exception as e:
@@ -393,8 +393,8 @@ class StAlgoEngine(object):
             DEFER_DONE_COLUMNS = ['VT_TRADE_ID', 'VT_ORDER_ID', 'TRADE_DATE', 'TRADE_TIME', 'USER_ID',
                                   'BROKER_ID', 'OPER_CODE', 'SYMBOL', 'EXCH_ID', 'TRADE_PRICE', 'DONE_QTY',
                                   'BS_FLAG', 'EO_FLAG', 'STRATAGE']
-            tradedata = [trade.vtTradeID, trade.vtOrderID, '', trade.tradeTime, '',
-                         trade.brokerID, '', trade.symbol, trade.exch_id, trade.price, trade.volume,
+            tradedata = [trade.vtTradeID, trade.vtOrderID, '', trade.tradeTime, '',  '',#trade.brokerID,
+                         '', trade.symbol, trade.exchange, trade.price, trade.volume,
                          trade.direction, trade.offset, spreadName]
             d = pd.DataFrame([tradedata], columns=DEFER_DONE_COLUMNS)
             print("开始写入DEFER_DONE")
@@ -438,7 +438,7 @@ class StAlgoEngine(object):
         spread = event.dict_['data']
         #print spread
         print (u'spread=%s' % (spread))
-        sniperAlgo = SniperAlgo(self.vtSymbolAlgoDict[order.vtSymbol])
+        sniperAlgo = self.vtSymbolAlgoDict[order.vtSymbol]
         # 取出合约对应的委托单列表
         orderIdList = sniperAlgo.legOrderDict[order.vtSymbol]
         #vtSymbolAlgoDict:vtSymbol:algo                self.eventEngine
@@ -453,8 +453,8 @@ class StAlgoEngine(object):
                                          'USER_ID', 'BROKER_ID', 'OPER_CODE', 'SYMBOL', 'EXCH_ID', 'ENTRUST_PRICE',
                                          'ENTRUST_QTY','PRODUCT_CLASS', 'CURRENCY_CODE', 'PRICE_TYPE', 'BS_FLAG',
                                          'EO_FLAG', 'ENTRUST_STATUS', 'STRATAGE']
-            ordertn = [order.vtOrderID, '', '', '', '',
-                       order.brokerID, '', order.symbol, order.exch_id, order.price, order.totalVolume,
+            ordertn = [order.vtOrderID, '', '', '', '',#order.brokerID,
+                       '','', order.symbol, order.exchange, order.price, order.totalVolume,
                        '', '', '', order.direction, order.offset, '', sniperAlgo.spreadName]
             d = pd.DataFrame([ordertn], columns=DEFER_ENTRUST_RTN_COLUMNS)
             print("开始写入DEFER_ENTRUST_RTN中")
