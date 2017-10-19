@@ -317,7 +317,7 @@ class StAlgoEngine(object):
     def updatePosition(self, trade):
         if trade.vtSymbol not in self.vtSymbolAlgoDict:
             return
-        sniperAlgo = SniperAlgo(self.vtSymbolAlgoDict[trade.vtSymbol])
+        sniperAlgo = self.vtSymbolAlgoDict[trade.vtSymbol]
         # 取出合约对应的委托单列表
         orderIdList = sniperAlgo.legOrderDict[trade.vtSymbol]
         # 该笔成交是该算法发出的委托
@@ -384,7 +384,7 @@ class StAlgoEngine(object):
         print trade
         if trade.vtSymbol not in self.vtSymbolAlgoDict:
             return
-        sniperAlgo = SniperAlgo(self.vtSymbolAlgoDict[trade.vtSymbol])
+        sniperAlgo = self.vtSymbolAlgoDict[trade.vtSymbol]
         # 取出合约对应的委托单列表
         orderIdList = sniperAlgo.legOrderDict[trade.vtSymbol]
         # 该笔成交是该算法发出的委托
@@ -403,7 +403,7 @@ class StAlgoEngine(object):
                 print("写入DEFER_DONE结束了")
             except Exception as e:
                 self.writeLog(u"增量写入数据时发生了错误，错误信息：%s" % str(e.message))
-                print("写入DEFER_DONE报错")
+                print("写入DEFER_DONE报错%s"% str(e.message))
 
     # 委托单入库处理
     def handleOrder(self, vtSymbol, orderReq):
@@ -415,8 +415,24 @@ class StAlgoEngine(object):
                                  'BROKER_ID', 'OPER_CODE', 'SYMBOL', 'EXCH_ID', 'ENTRUST_PRICE',
                                  'ENTRUST_QTY', 'PRODUCT_CLASS', 'CURRENCY_CODE', 'PRICE_TYPE', 'BS_FLAG',
                                  'EO_FLAG', 'ENTRUST_STATUS', 'STRATAGE']
+        #0:开仓；1：平仓
+        if orderReq.offset == OFFSET_OPEN:
+            offsettmp = '0'
+        elif orderReq.offset == OFFSET_CLOSE:
+            offsettmp = '1'
+        else:
+            print("不支持的offset")
+
+        #L:多；S：空
+        if orderReq.direction == DIRECTION_LONG:
+            directiontmp = 'L'
+        elif orderReq.direction == DIRECTION_SHORT:
+            directiontmp = 'S'
+        else:
+            print("不支持的DIRECTION")
+
         orderData = ['', '', '', '', '', '', orderReq.symbol, orderReq.exchange, orderReq.price, orderReq.volume,
-                     '', '', '', orderReq.direction, orderReq.offset, '', spreadName]
+                     '', '', '', directiontmp, offsettmp, '', spreadName]
         d = pd.DataFrame([orderData], columns=DEFER_ENTRUST_COLUMNS)
         print("开始写入DEFER_ENTRUST中")
         try:
@@ -425,7 +441,7 @@ class StAlgoEngine(object):
             print("写入DEFER_ENTRUST结束了")
         except Exception as e:
             self.writeLog(u"增量写入数据时发生了错误，错误信息：%s" % str(e.message))
-            print("写入DEFER_ENTRUST报错")
+            print("写入DEFER_ENTRUST报错%s"% str(e.message))
 
     # 委托推送入库处理
     def handleOrderBack(self, order,event):
@@ -464,7 +480,7 @@ class StAlgoEngine(object):
                 print("写入DEFER_ENTRUST_RTN结束了")
             except Exception as e:
                 self.writeLog(u"增量写入数据时发生了错误，错误信息：%s" % str(e.message))
-                print("写入DEFER_ENTRUST_RTN报错")
+                print("写入DEFER_ENTRUST_RTN报错%s"% str(e.message))
 
     # ----------------------------------------------------------------------
     def processSpreadTickEvent(self, event):
