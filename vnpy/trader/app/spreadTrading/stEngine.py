@@ -5,7 +5,10 @@ import shelve
 import sys
 import traceback
 
+import time;  # 引入time模块
+import datetime
 import pandas as pd
+import uuid
 
 from vnpy.event import Event
 from vnpy.DAO import *
@@ -393,24 +396,46 @@ class StAlgoEngine(object):
             DEFER_DONE_COLUMNS = ['VT_TRADE_ID', 'VT_ORDER_ID', 'TRADE_DATE', 'TRADE_TIME', 'USER_ID',
                                   'BROKER_ID', 'OPER_CODE', 'SYMBOL', 'EXCH_ID', 'TRADE_PRICE', 'DONE_QTY',
                                   'BS_FLAG', 'EO_FLAG', 'STRATAGE']
+            # 0:开仓；1：平仓
+            if trade.offset == OFFSET_OPEN:
+                offsettmp = '0'
+            elif trade.offset == OFFSET_CLOSE:
+                offsettmp = '1'
+            else:
+                print("不支持的offset")
+
+            # L:多；S：空
+            if trade.direction == DIRECTION_LONG:
+                directiontmp = 'L'
+            elif trade.direction == DIRECTION_SHORT:
+                directiontmp = 'S'
+            else:
+                print("不支持的DIRECTION")
+
+            # str(uuid.uuid1()).replace('-', '')来唯一生成32为流水号，记录委托单入库时间，取系统时间
+            i = datetime.datetime.now()
+            orderDate = str(i.year) + str(i.month) + str(i.day)
+            orderTime = str(i.hour) + str(i.minute) + str(i.second)
+
             tradedata = [trade.vtTradeID, trade.vtOrderID, '', trade.tradeTime, '',  '',#trade.brokerID,
                          '', trade.symbol, trade.exchange, trade.price, trade.volume,
-                         trade.direction, trade.offset, spreadName]
+                         directiontmp, offsettmp, spreadName]
             d = pd.DataFrame([tradedata], columns=DEFER_DONE_COLUMNS)
             print("开始写入DEFER_DONE")
             try:
-                writeData('vnpy', 'DEFER_DONE', d)
+                writeData('vnpy', 'defer_done', d)
                 print("写入DEFER_DONE结束了")
             except Exception as e:
                 self.writeLog(u"增量写入数据时发生了错误，错误信息：%s" % str(e.message))
                 print("写入DEFER_DONE报错%s"% str(e.message))
 
     # 委托单入库处理
-    def handleOrder(self, vtSymbol, orderReq):
+    def handleOrder(self, vtSymbol, orderReq, vtOrderID):
         #orderReq = VtOrderReq()
         print  (u'handleOrder:orderReq=%s,vtSymbol=%s' % (orderReq,vtSymbol))
         print vtSymbol
         spreadName = self.vtSymbolAlgoDict[vtSymbol].spreadName
+        #主键：'VT_ORDER_ID', 'ENTRUST_DATE',  'EXCH_ID'
         DEFER_ENTRUST_COLUMNS = ['VT_ORDER_ID', 'ENTRUST_DATE', 'ENTRUST_TIME', 'USER_ID',
                                  'BROKER_ID', 'OPER_CODE', 'SYMBOL', 'EXCH_ID', 'ENTRUST_PRICE',
                                  'ENTRUST_QTY', 'PRODUCT_CLASS', 'CURRENCY_CODE', 'PRICE_TYPE', 'BS_FLAG',
@@ -431,12 +456,16 @@ class StAlgoEngine(object):
         else:
             print("不支持的DIRECTION")
 
-        orderData = ['', '', '', '', '', '', orderReq.symbol, orderReq.exchange, orderReq.price, orderReq.volume,
+        #str(uuid.uuid1()).replace('-', '')来唯一生成32为流水号，记录委托单入库时间，取系统时间
+        i = datetime.datetime.now()
+        orderDate = str(i.year) + str(i.month) + str(i.day )
+        orderTime = str(i.hour) + str(i.minute) + str(i.second )
+        orderData = [vtOrderID, orderDate,orderTime, '', '', '', orderReq.symbol, orderReq.exchange, orderReq.price, orderReq.volume,
                      '', '', '', directiontmp, offsettmp, '', spreadName]
         d = pd.DataFrame([orderData], columns=DEFER_ENTRUST_COLUMNS)
         print("开始写入DEFER_ENTRUST中")
         try:
-            writeData('vnpy', 'DEFER_ENTRUST', d)
+            writeData('vnpy', 'defer_entrust', d)
             # common.logger.info(u"写入数据%s" % (d.max))
             print("写入DEFER_ENTRUST结束了")
         except Exception as e:
@@ -456,26 +485,43 @@ class StAlgoEngine(object):
         print (u'spread=%s' % (spread))
         sniperAlgo = self.vtSymbolAlgoDict[order.vtSymbol]
         # 取出合约对应的委托单列表
+        #print ("委托推送入库处理sniperAlgo %s,sniperAlgo.legOrderDict[order.vtSymbol]:%s"% str(sniperAlgo),str(sniperAlgo.legOrderDict[order.vtSymbol]))
         orderIdList = sniperAlgo.legOrderDict[order.vtSymbol]
-        #vtSymbolAlgoDict:vtSymbol:algo                self.eventEngine
-        #sniperAlgo = SniperAlgo(self.vtSymbolAlgoDict[order.vtSymbol],spread.initSpread)
-        #sniperAlgo = SniperAlgo(algoEngine,self.vtSymbolAlgoDict[order.vtSymbol].spread)
-        # 取出合约对应的委托单列表
-        #orderIdList = self.vtSymbolAlgoDict[order.vtSymbol]
-        #orderIdList = sniperAlgo.legOrderDict[order.vtSymbol]
+
+        #0:开仓；1：平仓
+        if order.offset == OFFSET_OPEN:
+            offsettmp = '0'
+        elif order.offset == OFFSET_CLOSE:
+            offsettmp = '1'
+        else:
+            print("不支持的offset")
+
+        #L:多；S：空
+        if order.direction == DIRECTION_LONG:
+            directiontmp = 'L'
+        elif order.direction == DIRECTION_SHORT:
+            directiontmp = 'S'
+        else:
+            print("不支持的DIRECTION")
+
+        #str(uuid.uuid1()).replace('-', '')来唯一生成32为流水号，记录委托单入库时间，取系统时间
+        i = datetime.datetime.now()
+        orderDate = str(i.year) + str(i.month) + str(i.day )
+        orderTime = str(i.hour) + str(i.minute) + str(i.second )
+
         # 该笔委托回报是该算法发出的委托
         if order.vtOrderID in orderIdList:
             DEFER_ENTRUST_RTN_COLUMNS = ['VT_ORDER_ID', 'ENTRUST_DATE', 'ENTRUST_TIME', 'CANCEL_TIME',
                                          'USER_ID', 'BROKER_ID', 'OPER_CODE', 'SYMBOL', 'EXCH_ID', 'ENTRUST_PRICE',
                                          'ENTRUST_QTY','PRODUCT_CLASS', 'CURRENCY_CODE', 'PRICE_TYPE', 'BS_FLAG',
                                          'EO_FLAG', 'ENTRUST_STATUS', 'STRATAGE']
-            ordertn = [order.vtOrderID, '', '', '', '',#order.brokerID,
+            ordertn = [order.vtOrderID,orderDate, orderTime, '', '',#order.brokerID,
                        '','', order.symbol, order.exchange, order.price, order.totalVolume,
-                       '', '', '', order.direction, order.offset, '', sniperAlgo.spreadName]
+                       '', '', '', directiontmp, offsettmp, '', sniperAlgo.spreadName]
             d = pd.DataFrame([ordertn], columns=DEFER_ENTRUST_RTN_COLUMNS)
             print("开始写入DEFER_ENTRUST_RTN中")
             try:
-                writeData('vnpy', 'DEFER_ENTRUST_RTN', d)
+                writeData('vnpy', 'defer_entrust_rtn', d)
                 # common.logger.info(u"写入数据%s" % (d.max))
                 print("写入DEFER_ENTRUST_RTN结束了")
             except Exception as e:
@@ -555,7 +601,7 @@ class StAlgoEngine(object):
 
         vtOrderID = self.mainEngine.sendOrder(req, contract.gatewayName)
         # 委托单入库处理
-        self.handleOrder(vtSymbol, req)
+        self.handleOrder(vtSymbol, req, vtOrderID)
 
         return vtOrderID
 

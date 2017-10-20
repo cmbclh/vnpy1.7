@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71864a17-ad16-4c8e-9263-5cbf1dc977bc" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/VnTrader/temp/CTP_Private.con" afterPath="$PROJECT_DIR$/examples/VnTrader/temp/CTP_Private.con" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/VnTrader/temp/CTP_Public.con" afterPath="$PROJECT_DIR$/examples/VnTrader/temp/CTP_Public.con" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/VnTrader/temp/CTP_QueryRsp.con" afterPath="$PROJECT_DIR$/examples/VnTrader/temp/CTP_QueryRsp.con" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/VnTrader/temp/CTP_TradingDay.con" afterPath="$PROJECT_DIR$/examples/VnTrader/temp/CTP_TradingDay.con" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vnpy/logfiles/log_20171019.log" afterPath="$PROJECT_DIR$/vnpy/logfiles/log_20171019.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py" afterPath="$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,8 +23,8 @@
       <file leaf-file-name="stEngine.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1666">
-              <caret line="379" column="69" lean-forward="true" selection-start-line="379" selection-start-column="69" selection-end-line="379" selection-end-column="69" />
+            <state relative-caret-position="80">
+              <caret line="482" column="0" lean-forward="false" selection-start-line="482" selection-start-column="0" selection-end-line="482" selection-end-column="0" />
               <folding>
                 <element signature="e#19#30#0" expanded="true" />
               </folding>
@@ -89,8 +95,8 @@
       <file leaf-file-name="eventEngine.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vnpy/event/eventEngine.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="92" column="12" lean-forward="true" selection-start-line="92" selection-start-column="12" selection-end-line="92" selection-end-column="12" />
+            <state relative-caret-position="140">
+              <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -99,8 +105,8 @@
       <file leaf-file-name="stAlgo.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stAlgo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="352" column="46" lean-forward="true" selection-start-line="352" selection-start-column="46" selection-end-line="352" selection-end-column="46" />
+            <state relative-caret-position="111">
+              <caret line="207" column="0" lean-forward="false" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1024,12 +1030,12 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982457" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40584797" sideWeight="0.5064378" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982457" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39181286" sideWeight="0.49356222" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39181286" sideWeight="0.49356222" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982457" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32865497" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24946351" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32865497" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36725146" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30760235" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1072,124 +1078,89 @@
       <breakpoints>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>413</line>
+          <line>438</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>446</line>
+          <line>475</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>477</line>
+          <line>523</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>467</line>
+          <line>513</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>464</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>449</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>451</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>453</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>383</line>
+          <line>386</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>317</line>
+          <line>320</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>335</line>
+          <line>338</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
-        <line-breakpoint suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>461</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>433</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint type="python-line">
-          <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>456</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>436</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>437</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>440</line>
+          <line>469</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>323</line>
+          <line>326</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>329</line>
+          <line>332</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>386</line>
+          <line>389</line>
           <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>390</line>
+          <line>393</line>
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>398</line>
+          <line>422</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
-          <line>319</line>
+          <line>322</line>
           <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
+          <line>488</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py</url>
+          <line>485</line>
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="42" />
+      <option name="time" value="47" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -1444,7 +1415,7 @@
         <state relative-caret-position="20608">
           <caret line="908" column="13" lean-forward="false" selection-start-line="908" selection-start-column="13" selection-end-line="908" selection-end-column="13" />
           <folding>
-            <element signature="e#19#30#0" expanded="true" />
+            <element signature="e#19#30#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1499,14 +1470,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vnpy/event/eventEngine.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="92" column="12" lean-forward="true" selection-start-line="92" selection-start-column="12" selection-end-line="92" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vnpy/trader/language/english/constant.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
@@ -1555,14 +1518,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stAlgo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="352" column="46" lean-forward="true" selection-start-line="352" selection-start-column="46" selection-end-line="352" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docker/dockerTrader/ctaStrategy/ctaTemplate.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2723">
@@ -1571,10 +1526,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stAlgo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="207" column="0" lean-forward="false" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vnpy/event/eventEngine.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vnpy/trader/app/spreadTrading/stEngine.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1666">
-          <caret line="379" column="69" lean-forward="true" selection-start-line="379" selection-start-column="69" selection-end-line="379" selection-end-column="69" />
+        <state relative-caret-position="80">
+          <caret line="482" column="0" lean-forward="false" selection-start-line="482" selection-start-column="0" selection-end-line="482" selection-end-column="0" />
           <folding>
             <element signature="e#19#30#0" expanded="true" />
           </folding>
