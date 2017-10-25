@@ -322,7 +322,11 @@ class StAlgoEngine(object):
             return
         sniperAlgo = self.vtSymbolAlgoDict[trade.vtSymbol]
         # 取出合约对应的委托单列表
-        orderIdList = sniperAlgo.legOrderDict[trade.vtSymbol]
+        if len(sniperAlgo.legOrderDict) != 0 :
+            orderIdList = sniperAlgo.legOrderDict[trade.vtSymbol]
+        else:
+            return
+
         # 该笔成交是该算法发出的委托
         if trade.vtOrderID in orderIdList:
             spreadName = self.sniperAlgo.spreadName
@@ -389,7 +393,11 @@ class StAlgoEngine(object):
             return
         sniperAlgo = self.vtSymbolAlgoDict[trade.vtSymbol]
         # 取出合约对应的委托单列表
-        orderIdList = sniperAlgo.legOrderDict[trade.vtSymbol]
+        if len(sniperAlgo.legOrderDict) != 0 :
+            orderIdList = sniperAlgo.legOrderDict[trade.vtSymbol]
+        else:
+            return
+
         # 该笔成交是该算法发出的委托
         if trade.vtOrderID in orderIdList:
             spreadName = sniperAlgo.spreadName
@@ -486,7 +494,10 @@ class StAlgoEngine(object):
         sniperAlgo = self.vtSymbolAlgoDict[order.vtSymbol]
         # 取出合约对应的委托单列表
         #print ("委托推送入库处理sniperAlgo %s,sniperAlgo.legOrderDict[order.vtSymbol]:%s"% str(sniperAlgo),str(sniperAlgo.legOrderDict[order.vtSymbol]))
-        orderIdList = sniperAlgo.legOrderDict[order.vtSymbol]
+        if len(sniperAlgo.legOrderDict) != 0 :
+            orderIdList = sniperAlgo.legOrderDict[order.vtSymbol]
+        else:
+            return
 
         #0:开仓；1：平仓
         if order.offset == OFFSET_OPEN:
@@ -557,6 +568,13 @@ class StAlgoEngine(object):
         algo = self.vtSymbolAlgoDict.get(trade.vtSymbol, None)
         if algo:
             algo.updateTrade(trade)
+
+        # 更新价差持仓 wzhua 新增spreadenginee中计算浮动盈亏
+        spread = self.dataEngine.vtSymbolSpreadDict[trade.vtSymbol]
+        spread.calculatePos()
+
+        # 推送价差持仓更新
+        self.dataEngine.putSpreadPosEvent(spread)
 
     # ----------------------------------------------------------------------
     def processOrderEvent(self, event):
